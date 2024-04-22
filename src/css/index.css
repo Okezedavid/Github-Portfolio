@@ -1,279 +1,296 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap");
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-size: 0.9rem;
-    font-family: 'Inter', sans-serif;
-    color: #f5f1e3;
-    background-color:#1d1e22;
-    letter-spacing: 0.02rem;
-    min-height: 100vh;
+  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+  color: #f5f1e3;
+  background-color: #1d1e22;
+  letter-spacing: 0.02rem;
+  min-height: 100vh;
 }
 
 h1 {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 p {
-    padding: 5px 0;
+  padding: 5px 0;
 }
 
-.language,.date,.visibility {
-    color: #8ba1d6;
-    font-weight: 510;
-
+.language,
+.date,
+.visibility {
+  color: #8ba1d6;
+  font-weight: 510;
 }
-.navbar{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-    background-color:  #393f4d;
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 100px
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  background-color: #393f4d;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 100px;
 }
 
 .github-icon {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
-.prev-btn,.view-more {
-    background-color: #1B9AAA;
-    color: #f5f1e3;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    max-width: fit-content;
-    margin: 10px 10px;
-    
-
+.prev-btn,
+.view-more {
+  background-color: #1b9aaa;
+  color: #f5f1e3;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  max-width: fit-content;
+  margin: 10px 10px;
 }
 
 .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .view-more:hover {
-    background-color: #36b4c5;
+  background-color: #36b4c5;
 }
 
 .prev-btn:hover {
-    background-color: #36b4c5;
+  background-color: #36b4c5;
 }
 
+.home-button {
+  background-color: #1b9aaa;
+  color: #f5f1e3;
+  padding: 8px 18px;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  max-width: fit-content;
+  margin: 10px auto; /* Center horizontally */
+  align-items: center;
+  justify-content: center;
+  display: block; /* Optional: Set display to block if needed */
+  /* Other styles */
+  position: absolute;
+  z-index: 1; /* Adjust as needed */
+  bottom: 20px; /* Example: Move the button 20px from the bottom */
+    left: 50%; /* Example: Center the button horizontally */
+    margin-left: -45px;
+}
+
+.home-button:hover {
+  background-color: #36b4c5;
+}
 
 .input {
-    width: 300px;
-    font-size: 15px;
-    margin-right: 5px;
-    margin-left: 4.7rem;
-    max-width: fit-content;
-    height: 30px;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    color: #8ba1d6;
-    background-color: #c9d1e3;
-    font-weight: 750;
+  width: 300px;
+  font-size: 15px;
+  margin-right: 5px;
+  margin-left: 4.7rem;
+  max-width: fit-content;
+  height: 30px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  color: #8ba1d6;
+  background-color: #c9d1e3;
+  font-weight: 750;
 }
 
 .btn {
-    background-color: #1B9AAA;
-    color: #f5f1e3;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    max-width: fit-content;
-
+  background-color: #1b9aaa;
+  color: #f5f1e3;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  max-width: fit-content;
 }
 
 .btn:hover {
-    background-color: #36b4c5;
+  background-color: #36b4c5;
 }
 
 .select-btn {
-    width: 800px;
-    font-size: 15px;
-    margin-right: 5px;
-    margin-left: 4.7rem;
-    margin-top: 10px;
-    max-width: fit-content;
-    height: 29px;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    color: #70798c;
-    background-color: #c9d1e3;
-    font-weight: 700;
-    font-weight: 760;
+  width: 800px;
+  font-size: 15px;
+  margin-right: 5px;
+  margin-left: 4.7rem;
+  margin-top: 10px;
+  max-width: fit-content;
+  height: 29px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  color: #70798c;
+  background-color: #c9d1e3;
+  font-weight: 700;
+  font-weight: 760;
 }
 
-
-
 section {
-    padding: 20px 0;
+  padding: 20px 0;
 }
 
 .repo-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 30px;
-    width: 90%;
-    margin: 0 auto;
-    font-size: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 30px;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 14px;
 }
 
 @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .repo-card {
-    animation: fadeIn 1.5s ease-out forwards;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
 
+.repo-card {
+  animation: fadeIn 1.5s ease-out forwards;
+}
 
 .repo-card,
 .repodetail-card {
-    border: 2px solid #1B9AAA;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: #7c8db5;
+  border: 2px solid #1b9aaa;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: #7c8db5;
 }
 
 a {
-    text-decoration: none;
-    color:#0d7591;
+  text-decoration: none;
+  color: #0d7591;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .repo-name {
-    color:#0e5f76;
-    font-size: 2rem;
-    word-break: break-word;
+  color: #0e5f76;
+  font-size: 2rem;
+  word-break: break-word;
 }
 
 #repodetail {
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto;
-    margin-bottom: 50px;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 50px;
 }
 
 #repodetail p {
-    padding: 15px 0;
-    word-break: break-all;
+  padding: 15px 0;
+  word-break: break-all;
 }
 
 .repo-mini-details {
-    gap: 10px 50px;
-    margin: 0 0 15px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px 50px;
+  margin: 0 0 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
-.repo-mini-details  p {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
+.repo-mini-details p {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .icons {
-    color: #1B9AAA;
+  color: #1b9aaa;
 }
 
-
 .error-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    min-height: 50h;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 50h;
 }
 
 .error-page h1 {
-    font-size: 3rem;
-    color: #1B9AAA;
-    margin-bottom: 20px;
+  font-size: 3rem;
+  color: #1b9aaa;
+  margin-bottom: 20px;
 }
 
 .error-status {
-    font-size: 5rem;
+  font-size: 5rem;
 }
 
-.foot{
-    color: #f5f1e3;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    bottom: 10px;
-    width: 100%;
+.foot {
+  color: #f5f1e3;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  bottom: 10px;
+  width: 100%;
 }
-
 
 .social-links {
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-  }
-  
-   .social-icon {
-    margin: 0 0.5rem;
-     width: 300px;
-    height: auto;
-    color: #f5f1e3;
-  }
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
 
-  .social-links .social-icon {
-    height: 5px; 
-    width: 5px; 
-    color: #f5f1e3;
-  }
+.social-icon {
+  margin: 0 0.5rem;
+  width: 300px;
+  height: auto;
+  color: #f5f1e3;
+}
+
+.social-links .social-icon {
+  height: 5px;
+  width: 5px;
+  color: #f5f1e3;
+}
 
 @media screen and (max-width: 380px) {
-    .repo-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
+  .repo-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 
-    h1 {
-        font-size: 1.5rem;
-    }
+  h1 {
+    font-size: 1.5rem;
+  }
 
-    .github-icon {
-        font-size: 2rem;
-    }
- .input{
+  .github-icon {
+    font-size: 2rem;
+  }
+  .input {
     width: 200px;
     font-size: 15px;
     margin-right: 5px;
     margin-left: 50px;
- }
- 
- 
+  }
 }
