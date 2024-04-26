@@ -72,7 +72,7 @@ function Home() {
         <button className="btn">Search</button>
         <br />
         <select className="select-btn">
-          <option>Filter by language</option>
+          <option>Filter</option>
           <option>HTML</option>
           <option>CSS</option>
           <option>JAVASCRIPT</option>

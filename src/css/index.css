@@ -179,7 +179,7 @@ section {
 
 .repo-card,
 .repodetail-card {
-  border: 2px solid #1b9aaa;
+  border: 1px solid #1b9aaa;
   padding: 15px;
   border-radius: 15px;
   box-shadow: #7c8db5;
@@ -272,7 +272,7 @@ a:hover {
 .social-links .social-icon {
   height: 5px;
   width: 5px;
-  color: #f5f1e3;
+  /* color: #e6d699; */
 }
 
 @media screen and (max-width: 380px) {
