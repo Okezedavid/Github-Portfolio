@@ -1,72 +1,74 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
-import Paginate from "./Paginate"
+import Paginate from "./Paginate";
 
 function Home() {
-  const [user, setUser] = useState([]);
+  const [repos, setRepos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [showViewMore, setShowViewMore] = useState("Next");
-  const [searchTerm, setSearchTerm] = useState(""); // Added for search functionality
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [totalPages, setTotalPages] = useState(1);
+
+  const perPage = 6;
 
   const fetchRepos = () => {
-    const apiUrl = `https://api.github.com/users/Okezedavid/repos?per_page=6&page=${currentPage}&q=${searchTerm}`;
+    const apiUrl = `https://api.github.com/users/Okezedavid/repos`;
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        if (data.length === 0) {
-          setShowViewMore("No more Repos");
-        } else {
-          // Always replace the user data with new data
-          setUser(data);
-          setShowViewMore("Next");
-        }
+        setRepos(data);
+        setTotalPages(Math.ceil(data.length / perPage));
       });
   };
 
   useEffect(() => {
     fetchRepos();
-  }, [currentPage, searchTerm]); // Add searchTerm as a dependency here
+  }, []);
+
+  useEffect(() => {
+    if (currentPage >= totalPages) {
+      setShowViewMore("No more Repos");
+    } else {
+      setShowViewMore("Next");
+    }
+  }, [currentPage, totalPages]);
 
   const viewMore = () => {
-    setCurrentPage(currentPage + 1);
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   const prev = () => {
-    // Ensure we don't go below page 1
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  // Handle language filter change
-  const handleLanguageFilter = (selectedLanguage) => {
-    setSearchTerm(selectedLanguage);
-    setCurrentPage(1); // Reset page when changing the filter
+  const handleLanguageFilter = (language) => {
+    setSelectedLanguage(language);
+    setCurrentPage(1);
   };
 
-  // Filter repositories based on search term
-  const filteredUsers = user.filter((userElement) => {
-    if (!searchTerm) {
-      // No search term entered, show all repositories
-      return true;
-    }
-    // Show repositories whose names match the search term
-    return userElement.name.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredRepos = repos.filter((repo) => {
+    const matchesSearchTerm = repo.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesLanguage = selectedLanguage ? repo.language === selectedLanguage : true;
+    return matchesSearchTerm && matchesLanguage;
   });
 
-  const userElements = filteredUsers.map((userElement) => {
+  const displayedRepos = filteredRepos.slice((currentPage - 1) * perPage, currentPage * perPage);
+
+  const repoElements = displayedRepos.map((repo) => {
     return (
-      <div className="repo-card" key={userElement.id}>
-        <Link to={`/repodetails/${userElement.name}`}>
-          <h2 className="repo-name">{userElement.name}</h2>
+      <div className="repo-card" key={repo.id}>
+        <Link to={`/repodetails/${repo.name}`}>
+          <h2 className="repo-name">{repo.name}</h2>
         </Link>
-        <p className="language">
-          Language:{" "}
-          {userElement.language === null ? "none" : userElement.language}
-        </p>
-        <p className="date">Start date & time: {userElement.created_at}</p>
-        <p className="visibility">Visibility: {userElement.visibility}</p>
+        <p className="language">Language: {repo.language || "none"}</p>
+        <p className="date">Start date & time: {new Date(repo.created_at).toLocaleString()}</p>
+        <p className="visibility">Visibility: {repo.visibility}</p>
       </div>
     );
   });
@@ -79,7 +81,6 @@ function Home() {
         </h2>
       </div>
       <div className="main-inputs">
-        {/* Search input */}
         <input
           className="input"
           placeholder="Search repos here..."
@@ -87,26 +88,20 @@ function Home() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        {/* Language filter dropdown */}
-        <select
-          className="select-btn"
-          onChange={(e) => handleLanguageFilter(e.target.value)}
-        >
+        <select className="select-btn" onChange={(e) => handleLanguageFilter(e.target.value)}>
           <option value="">Filter</option>
           <option value="HTML">HTML</option>
           <option value="CSS">CSS</option>
           <option value="JavaScript">JavaScript</option>
+          <option value="React">React</option>
+          <option value="Vue">Vue</option>
+          <option value="Typescript">Typescript</option>
         </select>
       </div>
-
       <div className="repoTitle">
         <h1>My Repositories</h1>
       </div>
-
-      {/* Display repositories */}
-      <section className="repo-container">{userElements}</section>
-
-      {/* Pagination */}
+      <section className="repo-container">{repoElements}</section>
       <div className="pagination">
         {currentPage > 1 && (
           <button className="prev-btn" onClick={prev}>
@@ -115,16 +110,13 @@ function Home() {
         )}
         <Paginate currentPage={currentPage} />
         <button
-  className="view-more"
-  onClick={viewMore}
-  disabled={showViewMore === "No more Repos"}
->
-  {showViewMore}
-</button>
-
+          className="view-more"
+          onClick={viewMore}
+          disabled={showViewMore === "No more Repos"}
+        >
+          {showViewMore}
+        </button>
       </div>
-
-      {/* Footer */}
       <footer className="foot">
         <div className="social-links">
           <SocialIcon
