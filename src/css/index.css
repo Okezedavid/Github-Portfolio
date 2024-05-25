@@ -87,12 +87,24 @@ p {
   color: #ddd6bc;
 }
 
-
 .welcomeMessage h2 {
   /* ... Other styles ... */
   animation: typewriter 3s steps(40), fadeOut 1s 3s forwards; /* Apply both animations */
 }
 
+.repoTitle {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #dcddce;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: "Major Mono Display", monospace;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-top: 3rem;
+  /* animation: typewriter 3s steps(40), fadeOut 1s 3s forwards; Apply both animations */
+}
 
 .prev-btn,
 .view-more {
@@ -127,7 +139,7 @@ p {
 .home-button {
   background-color: #1b9aaa;
   color: #f5f1e3;
-  padding: 8px 18px; 
+  padding: 8px 18px;
   border: none;
   width: 100%;
   border-radius: 8px;
@@ -143,9 +155,8 @@ p {
   position: absolute;
   z-index: 1; /* Adjust as needed */
   bottom: 20px; /* Example: Move the button 20px from the bottom */
-    left: 50%; /* Example: Center the button horizontally */
-    margin-left: -45px;
-  
+  left: 50%; /* Example: Center the button horizontally */
+  margin-left: -45px;
 }
 
 .home-button:hover {
@@ -153,21 +164,26 @@ p {
 }
 
 .input {
-  width: 300px;
+  width: 50%;
   font-size: 15px;
-  margin-right: 5px;
-  margin-left: 4.7rem;
-  max-width: fit-content;
   height: 30px;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
+  padding: 17px;
+  border: 1.3px solid #4a5779;
+  border-radius: 10px;
   color: #8ba1d6;
-  background-color: #c9d1e3;
+  background-color: #1d1e22;
   font-weight: 750;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10%;
 }
 
-.btn {
+input:focus {
+  outline: none; /* Remove the default outline */
+  box-shadow: 0 0 5px 2px #9ddfe8; /* Blue shadow */
+}
+
+/* .btn {
   background-color: #1b9aaa;
   color: #f5f1e3;
   padding: 10px 20px;
@@ -181,23 +197,31 @@ p {
 
 .btn:hover {
   background-color: #36b4c5;
-}
+} */
 
 .select-btn {
-  width: 800px;
   font-size: 15px;
-  margin-right: 5px;
-  margin-left: 4.7rem;
+
   margin-top: 10px;
-  max-width: fit-content;
+
   height: 29px;
   padding: 5px;
   border: none;
   border-radius: 5px;
-  color: #70798c;
-  background-color: #c9d1e3;
+  color: #191c23;
+  background-color: #1b9aaa;
   font-weight: 700;
   font-weight: 760;
+  margin-left: 10px;
+  font-weight: 800;
+}
+
+.select option {
+  color: #f5f1e3;
+}
+
+.select-btn:hover {
+  background-color: #36b4c5;
 }
 
 section {
@@ -323,6 +347,13 @@ a:hover {
   height: auto;
   color: #f5f1e3;
 }
+.pagination-counter{
+  font-size: 1rem;
+  color: #e7e2e2;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
 
 .social-links .social-icon {
   height: 5px;
@@ -343,9 +374,7 @@ a:hover {
     font-size: 2rem;
   }
   .input {
-    width: 200px;
-    font-size: 15px;
-    margin-right: 5px;
-    margin-left: 50px;
+    width: 55%;
+    margin-left: 23px;
   }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { SocialIcon } from 'react-social-icons';
+import { SocialIcon } from "react-social-icons";
+import Paginate from "./Paginate"
 
 function Home() {
   const [user, setUser] = useState([]);
@@ -72,7 +73,11 @@ function Home() {
 
   return (
     <>
-    <div className="welcomeMessage"><h2>Heyy!👋 <span className="welcome">Welcome</span></h2></div>
+      <div className="welcomeMessage">
+        <h2>
+          Heyy!👋 <span className="welcome">Welcome</span>
+        </h2>
+      </div>
       <div className="main-inputs">
         {/* Search input */}
         <input
@@ -82,19 +87,20 @@ function Home() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button className="btn">Search</button>
-        <br />
-
         {/* Language filter dropdown */}
         <select
           className="select-btn"
           onChange={(e) => handleLanguageFilter(e.target.value)}
         >
-          <option value="">Filter By Language</option>
+          <option value="">Filter</option>
           <option value="HTML">HTML</option>
           <option value="CSS">CSS</option>
           <option value="JavaScript">JavaScript</option>
         </select>
+      </div>
+
+      <div className="repoTitle">
+        <h1>My Repositories</h1>
       </div>
 
       {/* Display repositories */}
@@ -107,16 +113,32 @@ function Home() {
             Prev
           </button>
         )}
-        <button className="view-more" onClick={viewMore}>
-          {showViewMore}
-        </button>
+        <Paginate currentPage={currentPage} />
+        <button
+  className="view-more"
+  onClick={viewMore}
+  disabled={showViewMore === "No more Repos"}
+>
+  {showViewMore}
+</button>
+
       </div>
 
       {/* Footer */}
       <footer className="foot">
         <div className="social-links">
-          <SocialIcon url="https://twitter.com/@DavidOkeze" target="_blank" rel="noopener noreferrer" className="social-icon"/>
-          <SocialIcon url="https://linkedin.com/in/david-ugochukwu-7172672b1" target="_blank" rel="noopener noreferrer" className="social-icon" />
+          <SocialIcon
+            url="https://twitter.com/@DavidOkeze"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon"
+          />
+          <SocialIcon
+            url="https://linkedin.com/in/david-ugochukwu-7172672b1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon"
+          />
         </div>
         <p>© 2024 David's Portfolio.</p>
       </footer>
