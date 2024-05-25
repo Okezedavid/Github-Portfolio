@@ -72,6 +72,7 @@ function Home() {
 
   return (
     <>
+    <div className="welcomeMessage"><h2>Heyy!👋 <span className="welcome">Welcome</span></h2></div>
       <div className="main-inputs">
         {/* Search input */}
         <input
