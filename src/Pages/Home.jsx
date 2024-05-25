@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SocialIcon } from 'react-social-icons';
+
 function Home() {
   const [user, setUser] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -8,9 +9,8 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState(""); // Added for search functionality
 
   const fetchRepos = () => {
-    fetch(
-      `https://api.github.com/users/Okezedavid/repos?per_page=6&page=${currentPage}&q=${searchTerm}`
-    )
+    const apiUrl = `https://api.github.com/users/Okezedavid/repos?per_page=6&page=${currentPage}&q=${searchTerm}`;
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         if (data.length === 0) {
@@ -38,10 +38,21 @@ function Home() {
     }
   };
 
+  // Handle language filter change
+  const handleLanguageFilter = (selectedLanguage) => {
+    setSearchTerm(selectedLanguage);
+    setCurrentPage(1); // Reset page when changing the filter
+  };
+
   // Filter repositories based on search term
-  const filteredUsers = user.filter((userElement) =>
-    userElement.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredUsers = user.filter((userElement) => {
+    if (!searchTerm) {
+      // No search term entered, show all repositories
+      return true;
+    }
+    // Show repositories whose names match the search term
+    return userElement.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   const userElements = filteredUsers.map((userElement) => {
     return (
@@ -62,6 +73,7 @@ function Home() {
   return (
     <>
       <div className="main-inputs">
+        {/* Search input */}
         <input
           className="input"
           placeholder="Search repos here..."
@@ -71,15 +83,23 @@ function Home() {
         />
         <button className="btn">Search</button>
         <br />
-        <select className="select-btn">
-          <option>Filter</option>
-          <option>HTML</option>
-          <option>CSS</option>
-          <option>JAVASCRIPT</option>
 
+        {/* Language filter dropdown */}
+        <select
+          className="select-btn"
+          onChange={(e) => handleLanguageFilter(e.target.value)}
+        >
+          <option value="">Filter By Language</option>
+          <option value="HTML">HTML</option>
+          <option value="CSS">CSS</option>
+          <option value="JavaScript">JavaScript</option>
         </select>
       </div>
+
+      {/* Display repositories */}
       <section className="repo-container">{userElements}</section>
+
+      {/* Pagination */}
       <div className="pagination">
         {currentPage > 1 && (
           <button className="prev-btn" onClick={prev}>
@@ -90,6 +110,7 @@ function Home() {
           {showViewMore}
         </button>
       </div>
+
       {/* Footer */}
       <footer className="foot">
         <div className="social-links">
