@@ -93,7 +93,7 @@ p {
 }
 
 .repoTitle {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-style: italic;
   color: #dcddce;
   justify-content: center;
@@ -360,6 +360,21 @@ a:hover {
   width: 5px;
   /* color: #e6d699; */
 }
+
+.repo-card {
+  animation: fadeIn 1.5s ease-out forwards;
+  border: 1px solid #1b9aaa;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: #7c8db5;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.repo-card:hover {
+  transform: rotate(5deg);
+  box-shadow: 0 0 10px #9ddfe8;
+}
+
 
 @media screen and (max-width: 480px) {
   .repo-container {

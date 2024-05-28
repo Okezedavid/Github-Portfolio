@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
 import Paginate from "./Paginate";
+import Skeleton from "./Skeleton";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 function Home() {
   const [repos, setRepos] = useState([]);
@@ -10,6 +13,7 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   const perPage = 6;
 
@@ -20,6 +24,7 @@ function Home() {
       .then((data) => {
         setRepos(data);
         setTotalPages(Math.ceil(data.length / perPage));
+        setLoading(false); // Set loading to false when data is fetched
       });
   };
 
@@ -60,19 +65,6 @@ function Home() {
 
   const displayedRepos = filteredRepos.slice((currentPage - 1) * perPage, currentPage * perPage);
 
-  const repoElements = displayedRepos.map((repo) => {
-    return (
-      <div className="repo-card" key={repo.id}>
-        <Link to={`/repodetails/${repo.name}`}>
-          <h2 className="repo-name">{repo.name}</h2>
-        </Link>
-        <p className="language">Language: {repo.language || "none"}</p>
-        <p className="date">Start date & time: {new Date(repo.created_at).toLocaleString()}</p>
-        <p className="visibility">Visibility: {repo.visibility}</p>
-      </div>
-    );
-  });
-
   return (
     <>
       <div className="welcomeMessage">
@@ -101,21 +93,34 @@ function Home() {
       <div className="repoTitle">
         <h1>My Repositories</h1>
       </div>
-      <section className="repo-container">{repoElements}</section>
+      <section className="repo-container">
+        {loading ? ( // Conditionally render Skeleton while loading
+          Array.from({ length: perPage }).map((_, index) => <Skeleton key={index} />)
+        ) : (
+          displayedRepos.map((repo) => (
+            <div className="repo-card" key={repo.id}>
+              <Link to={`/repodetails/${repo.name}`}>
+                <h2 className="repo-name">{repo.name}</h2>
+              </Link>
+              <p className="language">Language: {repo.language || "none"}</p>
+              <p className="date">Start date & time: {new Date(repo.created_at).toLocaleString()}</p>
+              <p className="visibility">Visibility: {repo.visibility}</p>
+            </div>
+          ))
+        )}
+      </section>
       <div className="pagination">
         {currentPage > 1 && (
           <button className="prev-btn" onClick={prev}>
-            Prev
+            <FontAwesomeIcon icon={faArrowLeft} /> 
           </button>
         )}
         <Paginate currentPage={currentPage} />
-        <button
-          className="view-more"
-          onClick={viewMore}
-          disabled={showViewMore === "No more Repos"}
-        >
-          {showViewMore}
-        </button>
+        {currentPage < totalPages && (
+          <button className="view-more" onClick={viewMore}>
+            <FontAwesomeIcon icon={faArrowRight} />
+          </button>
+        )}
       </div>
       <footer className="foot">
         <div className="social-links">
