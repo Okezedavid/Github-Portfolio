@@ -347,13 +347,12 @@ a:hover {
   height: auto;
   color: #f5f1e3;
 }
-.pagination-counter{
+.pagination-counter {
   font-size: 1rem;
   color: #bcb5b5;
   font-weight: 600;
   margin-top: 20px;
 }
-
 
 .social-links .social-icon {
   height: 5px;
@@ -375,7 +374,6 @@ a:hover {
   box-shadow: 0 0 10px #9ddfe8;
 }
 
-
 @media screen and (max-width: 480px) {
   .repo-container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -384,7 +382,6 @@ a:hover {
   .repo-name {
     font-size: 20px;
   }
-  
 
   h1 {
     font-size: 1.5rem;
