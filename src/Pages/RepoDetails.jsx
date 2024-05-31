@@ -73,10 +73,11 @@ function MyRepoDetails() {
             View on Github
           </a>
         </p>
-        <Link to="/">
+     
+      </div>
+      <Link to="/">
           <button className="home-button">Home Page</button>
         </Link>
-      </div>
     </div>
   );
 }
