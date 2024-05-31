@@ -5,7 +5,7 @@ function Header() {
         
            <header role="header" className="navbar">
              <FaGithub className="github-icon"/>
-            <h1>DavidOkeze's GitHub.</h1>
+            <h1>DavidOkeze's GitHub</h1>
            </header>
     
     )

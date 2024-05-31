@@ -31,17 +31,31 @@ p {
 }
 .navbar {
   display: flex;
-  align-items: center;
+  font-size: 1rem;
   gap: 10px;
-  justify-content: center;
-  background-color: #393f4d;
-  text-align: center;
+  /* justify-content: center; */
+  /* background-color: #393f4d; */
+  font-family: 'Roboto', sans-serif;
+  color: #dcddce;
+  text-align: left;
   padding: 20px;
   margin-bottom: 100px;
+  
+}
+
+.navbar h1 {
+  transition: transform 0.3s ease;
+  padding-top: 10px;
+}
+
+.navbar h1:hover {
+  transform: skewX(5deg);
+  color: #dadede;
 }
 
 .github-icon {
-  font-size: 3rem;
+  font-size: 2rem;
+  margin-top: 10px;
 }
 /* .welcomeMessage h2{
   font-size: 2.5rem;
@@ -110,7 +124,7 @@ p {
 .view-more {
   background-color: #1b9aaa;
   color: #f5f1e3;
-  padding: 10px 20px;
+  padding:5px 15px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -334,18 +348,18 @@ a:hover {
   bottom: 10px;
   width: 100%;
 }
-
 .social-links {
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .social-icon {
-  margin: 0 0.5rem;
-  width: 300px;
-  height: auto;
-  color: #f5f1e3;
+  width: 20px;
+  height: 20px;
+  fill: #eee8d3;
+ /* fill: currentColor; */
 }
 .pagination-counter {
   font-size: 1rem;
@@ -354,11 +368,7 @@ a:hover {
   margin-top: 20px;
 }
 
-.social-links .social-icon {
-  height: 5px;
-  width: 5px;
-  /* color: #e6d699; */
-}
+
 
 .repo-card {
   animation: fadeIn 1.5s ease-out forwards;
